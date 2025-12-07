@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background-color: #2c3e50; /* 深色背景比較有質感 */
+            color: white;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            }
+
+        .slot-window {
+            width: 300px;
+            height: 100px;
+            background-color: white;
+            color: #333;
+            margin: 20px auto;
+            border-radius: 10px;
+            border: 5px solid #f1c40f; /* 金色邊框 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem; /* 字體大一點 */
+            font-weight: bold;
+            }
+
+        button {
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 0 #791004; /* 按鈕立體感 */
+            transition: transform 0.1s;
+        }
+
+        button:active {
+            transform: translateY(4px); /* 按下去的動畫 */
+            box-shadow: 0 1px 0 #791004;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🍔 等等要吃啥 🍟</h1>
+        <div class="slot-machine">
+            <div class="slot-window">
+            <span id="result-text">Ready</span>
+            </div>
+        </div>
+        
+        <button id="spin-btn" onclick="startSpin()">🚀 抽一個</button>
+        <div class="list-settings">
+            <h3>候選名單：</h3>
+            <textarea id="food-list">麥當勞,肯德基,光餐,7-11,巷口麵店,不吃減肥</textarea>
+            <p class="hint">*用逗號分隔不同餐廳</p>
+        </div>
+    </div>
+    <script>
+        let timer; // 計時器
+        let isSpinning = false; 
+
+        function startSpin() {
+            const btn = document.getElementById('spin-btn');
+            const resultText = document.getElementById('result-text');
+            const inputList = document.getElementById('food-list').value;
+
+            const foods = inputList.split(','); 
+
+            // 以防重複點擊
+            if (isSpinning) return;
+            isSpinning = true;
+            btn.innerText = "選取中...";
+            btn.style.backgroundColor = "#95a5a6"; // 變灰色
+
+            //快速滾動效果
+            let speed = 50; 
+            let counter = 0;
+            
+        
+            timer = setInterval(() => {
+                // 隨機選一個顯示
+                const randomIndex = Math.floor(Math.random() * foods.length);
+                resultText.innerText = foods[randomIndex];
+                
+                counter++;
+                
+                // 轉了 30 次之後停止  
+                if (counter > 30) {
+                clearInterval(timer);
+                showResult(foods); // 呼叫停止後的函式
+                }
+            }, speed);
+        }
+
+        function showResult(foods) {
+        const resultText = document.getElementById('result-text');
+        const btn = document.getElementById('spin-btn');
+
+        const finalChoice = foods[Math.floor(Math.random() * foods.length)];
+        resultText.innerText = "🎉 " + finalChoice + " 🎉";
+        
+        // 恢復按鈕
+        isSpinning = false;
+        btn.innerText = "再抽一次";
+        btn.style.backgroundColor = "#e74c3c";
+        }
+    </script>
+</body>
