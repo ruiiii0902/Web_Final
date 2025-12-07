@@ -2,116 +2,90 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <style>
-        body {
-            background-color: #2c3e50; /* 深色背景比較有質感 */
-            color: white;
-            text-align: center;
-            font-family: 'Arial', sans-serif;
-            }
+  <meta charset="utf-8" />
+  <meta name="mainindex" content="width=device-width, initial-scale=1" />
+  <title>台南美食地圖</title>
 
-        .slot-window {
-            width: 300px;
-            height: 100px;
-            background-color: white;
-            color: #333;
-            margin: 20px auto;
-            border-radius: 10px;
-            border: 5px solid #f1c40f; /* 金色邊框 */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem; /* 字體大一點 */
-            font-weight: bold;
-            box-shadow: 0 0 20px rgba(241, 196, 15, 0.5); /* 發光效果 */
-            }
-
-        button {
-            padding: 15px 40px;
-            font-size: 1.5rem;
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 5px 0 #c0392b; /* 按鈕立體感 */
-            transition: transform 0.1s;
-        }
-
-        button:active {
-            transform: translateY(4px); /* 按下去的動畫 */
-            box-shadow: 0 1px 0 #c0392b;
-        }
-    </style>
+  <!-- 先不管 CSS，只用最少 inline 讓「上方固定」有效 -->
+  <style>
+    body{ margin:0; font-family:Arial, "Noto Sans TC", sans-serif; }
+    header{
+      position:fixed; top:0; left:0; right:0;
+      background:#fff; border-bottom:1px solid #ddd;
+      padding:12px 16px; z-index:999;
+    }
+    /* 用空白區把內容往下推，避免被固定 header 蓋住 */
+    .spacer{ height:72px; }
+    .banner{ padding:18px 16px; border-bottom:1px solid #eee; }
+    .content{ padding:16px; }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>🍔 命運午餐機 🍟</h1>
-        <div class="slot-machine">
-            <div class="slot-window">
-            <span id="result-text">準備好了嗎？</span>
-            </div>
-        </div>
-        
-        <button id="spin-btn" onclick="startSpin()">🚀 幫我選！</button>
-        <div class="list-settings">
-            <h3>候選名單：</h3>
-            <textarea id="food-list">麥當勞,肯德基,學校自助餐,7-11,巷口麵店,不吃減肥</textarea>
-            <p class="hint">*用逗號分隔不同餐廳</p>
-        </div>
+  <!-- 上方固定不動 -->
+  <header>
+    <div>
+      <strong>IIM好食</strong>
     </div>
-    <script>
-        let timer; // 控制動畫的計時器
-        let isSpinning = false; // 狀態：是不是正在轉
 
-        function startSpin() {
-        const btn = document.getElementById('spin-btn');
-        const resultText = document.getElementById('result-text');
-        const inputList = document.getElementById('food-list').value;
-        
-        // 1. 把輸入的文字轉成陣列 (Array)
-        const foods = inputList.split(','); 
+    <nav style="margin-top:10px;">
+      <a href="#">網頁1</a> |
+      <a href="#">網頁2</a> |
+      <a href="#">網頁3</a> |
+      <a href="#">網頁4</a> |
+      <a href="#">網頁5</a> |
+      <a href="#">網頁6</a> |
+      <a href="#">網頁7</a>
+    </nav>
+  </header>
 
-        // 防止重複點擊
-        if (isSpinning) return;
-        isSpinning = true;
-        btn.innerText = "選取中...";
-        btn.style.backgroundColor = "#95a5a6"; // 變灰色
+  <!-- 避免內容被 fixed header 蓋住 -->
+  <div class="spacer"></div>
 
-        // 2. 啟動快速滾動效果 (每 50 毫秒換一次字)
-        let speed = 50; 
-        let counter = 0;
-        
-        // 這裡用一個簡單的邏輯：先快速轉，然後停下
-        timer = setInterval(() => {
-            // 隨機選一個顯示
-            const randomIndex = Math.floor(Math.random() * foods.length);
-            resultText.innerText = foods[randomIndex];
-            
-            counter++;
-            
-            // 轉了 30 次之後停止 (模擬大概 1.5 秒)
-            if (counter > 30) {
-            clearInterval(timer);
-            showResult(foods); // 呼叫停止後的函式
-            }
-        }, speed);
-        }
+  <!-- 橫幅（可以放圖片或大標） -->
+  <section class="banner">
+    <img
+    src="image\tainan_map.jpg"
+    alt="地圖橫幅"
+    style="display:block; width:100%; height:auto;"
+    />
+  </section>
 
-        function showResult(foods) {
-        const resultText = document.getElementById('result-text');
-        const btn = document.getElementById('spin-btn');
+  <!-- 下方內容（清單） -->
+  <main class="content">
+    <h2>熱門分類</h2>
 
-        // 3. 決定最終結果 (這裡才是真正的命運時刻)
-        const finalChoice = foods[Math.floor(Math.random() * foods.length)];
-        resultText.innerText = "🎉 " + finalChoice + " 🎉";
-        
-        // 恢復按鈕
-        isSpinning = false;
-        btn.innerText = "再抽一次";
-        btn.style.backgroundColor = "#e74c3c";
-        
-        // 加分題：這裡可以加一點慶祝特效，例如變更背景色
-        }
-    </script>
+    <section>
+      <h3>沖繩自由行</h3>
+      <ul>
+        <li>租車：自由行行程</li>
+        <li>民宿訂房</li>
+        <li>機票 + 住宿套裝</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>沖繩租車</h3>
+      <ul>
+        <li>台灣人服務：中文也能溝通</li>
+        <li>取還車地點：那霸機場/市區</li>
+        <li>保險方案：基本/全險</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>在地體驗</h3>
+      <ul>
+        <li>自由行行程：包車服務</li>
+        <li>mini tour：半日/一日</li>
+        <li>人氣景點：美麗海/古宇利島</li>
+      </ul>
+    </section>
+
+    <!-- 撐高頁面用：測試固定上方效果 -->
+    <hr />
+    <p>往下滑，上方 header 會固定不動。</p>
+    <div style="height:800px;"></div>
+  </main>
 </body>
+</html>
