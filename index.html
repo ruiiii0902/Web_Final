@@ -1,91 +1,129 @@
-網頁程式設計
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8" />
-  <meta name="mainindex" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>台南美食地圖</title>
 
-  <!-- 先不管 CSS，只用最少 inline 讓「上方固定」有效 -->
-  <style>
-    body{ margin:0; font-family:Arial, "Noto Sans TC", sans-serif; }
-    header{
-      position:fixed; top:0; left:0; right:0;
-      background:#fff; border-bottom:1px solid #ddd;
-      padding:12px 16px; z-index:999;
-    }
-    /* 用空白區把內容往下推，避免被固定 header 蓋住 */
-    .spacer{ height:72px; }
-    .banner{ padding:18px 16px; border-bottom:1px solid #eee; }
-    .content{ padding:16px; }
-  </style>
+  <!-- 外部 CSS：所有頁都共用 -->
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/index.js" defer></script>
 </head>
 
 <body>
-  <!-- 上方固定不動 -->
-  <header>
-    <div>
-      <strong>IIM好食</strong>
-    </div>
+  <!-- 固定上方 Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <strong>IIM好食在</strong>
+      </div>
 
-    <nav style="margin-top:10px;">
-      <a href="#">網頁1</a> |
-      <a href="#">網頁2</a> |
-      <a href="#">網頁3</a> |
-      <a href="#">網頁4</a> |
-      <a href="#">網頁5</a> |
-      <a href="#">網頁6</a> |
-      <a href="#">網頁7</a>
-    </nav>
+      <!-- nav 平均分散 -->
+      <nav class="main-nav" aria-label="主選單">
+        <a href="index.html" class="active">首頁</a>
+        <a href="page2.html">網頁2</a>
+        <a href="page3.html">網頁3</a>
+        <a href="page4.html">網頁4</a>
+        <a href="page5.html">網頁5</a>
+        <a href="page6.html">網頁6</a>
+        <a href="page7.html">網頁7</a>
+      </nav>
+    </div>
   </header>
 
   <!-- 避免內容被 fixed header 蓋住 -->
-  <div class="spacer"></div>
+  <div class="header-spacer"></div>
 
-  <!-- 橫幅（可以放圖片或大標） -->
-  <section class="banner">
-    <img
-    src="image\tainan_map.jpg"
-    alt="地圖橫幅"
-    style="display:block; width:100%; height:auto;"
-    />
+  <!-- 主視覺（只有一張圖） -->
+  <section class="hero">
+    <img src="image/tainan_map.jpg" alt="台南美食地圖主視覺" class="hero-img">
   </section>
 
-  <!-- 下方內容（清單） -->
+  <!-- 內容 -->
   <main class="content">
     <h2>熱門分類</h2>
 
-    <section>
-      <h3>沖繩自由行</h3>
+    <section class="block">
+      <h3>台南美食介紹</h3>
+      <p>
+        台南是名符其實的美食之都，從在地人推薦的台南小吃，遠近馳名的台南牛肉湯，新穎的台南餐廳，
+        中西區、安平老街的美食到小吃店、隱藏版美食全部囊括，每種食物、每種風味都充滿人情味與在地風情。
+        如果你正在安排台南旅遊，好奇台南好吃的美食有哪些，不妨一起來看這些台南美食景點，
+        這次將以成大學生的視角，透過四年來在台南的生活經驗，帶著大家從早吃到晚，盡情感受台南的美食魅力吧！
+      </p>
+    </section>
+
+    <section class="block">
+      <h3>台南特色美食</h3>
       <ul>
-        <li>租車：自由行行程</li>
-        <li>民宿訂房</li>
-        <li>機票 + 住宿套裝</li>
+        <li>蝦仁飯 / 鱔魚意麵 / 碗粿</li>
+        <li>米糕 / 肉燥飯 / 四神湯</li>
+        <li>甜點：豆花、杏仁茶、布丁</li>
       </ul>
     </section>
 
-    <section>
-      <h3>沖繩租車</h3>
+    <section class="block">
+      <h3>拉麵</h3>
+      <div class="slider" data-autoplay="true" data-interval="3500">
+        <button class="slider-btn prev" type="button" aria-label="上一張">‹</button>
+
+        <div class="slider-viewport">
+            <div class="slider-track">
+            <div class="slide"><img src="image/ramen/IMG_8853.jpg" alt="一拉麵"></div>
+            <div class="slide"><img src="image/ramen/images.jpg" alt="洛屋"></div>
+            <div class="slide"><img src="image/ramen/IMG_2437-009.jpg" alt="覺丸"></div>
+            <div class="slide"><img src="image/ramen/img_1234.jpg" alt="連戶"></div>
+            <div class="slide"><img src="image/ramen/1913b67a.jpeg" alt="白露"></div>
+            <div class="slide"><img src="image/ramen/IMG_4551.jpg" alt="純鳩一夫"></div>
+            <div class="slide"><img src="image/ramen/1688609274.jpg" alt="菜良"></div>
+            <div class="slide"><img src="image/ramen/20241016094426_0_4f81da.jpg" alt="夜寐"></div>
+            <div class="slide"><img src="image/ramen/20250326124956_0_0e9430.jpg" alt="吾旬"></div>
+            </div>
+        </div>
+
+        <button class="slider-btn next" type="button" aria-label="下一張">›</button>
+      </div>
+    <p>台南的拉麵店風格多元，從濃厚豚骨、雞白湯到魚介系湯頭都找得到；有些店主打長時間熬煮的醇厚口感，
+        有些則走清爽系層次，搭配細麵或中粗麵呈現不同咬感。也因為台南本身飲食口味偏重香氣與層次，
+        許多拉麵店會在叉燒炙燒、溏心蛋入味、油香比例或辛香調味上做出獨特調整，讓一碗拉麵同時保有日式基底與在地個性。
+        無論是想找深夜暖胃的一碗，或是專程排隊吃限定口味，台南都很適合把拉麵排進你的美食清單。</p>
+    </section>
+
+    <section class="block">
+      <h3>丼飯 & 日式料理</h3>
       <ul>
-        <li>台灣人服務：中文也能溝通</li>
-        <li>取還車地點：那霸機場/市區</li>
-        <li>保險方案：基本/全險</li>
+        <li>平價丼飯</li>
+        <li>居酒屋</li>
+        <li>拉麵/烏龍</li>
       </ul>
     </section>
 
-    <section>
-      <h3>在地體驗</h3>
+    <section class="block">
+      <h3>泰式料理</h3>
       <ul>
-        <li>自由行行程：包車服務</li>
-        <li>mini tour：半日/一日</li>
-        <li>人氣景點：美麗海/古宇利島</li>
+        <li>打拋豬</li>
+        <li>綠咖哩</li>
+        <li>月亮蝦餅</li>
       </ul>
     </section>
 
-    <!-- 撐高頁面用：測試固定上方效果 -->
-    <hr />
-    <p>往下滑，上方 header 會固定不動。</p>
-    <div style="height:800px;"></div>
+    <section class="block">
+      <h3>牛肉湯專區</h3>
+      <ul>
+        <li>清燙牛肉湯</li>
+        <li>牛燥飯</li>
+        <li>早晨限定店</li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <h3>宵夜店</h3>
+      <ul>
+        <li>鹽酥雞</li>
+        <li>熱炒</li>
+        <li>深夜甜點</li>
+      </ul>
+    </section>
   </main>
 </body>
 </html>

@@ -1,0 +1,146 @@
+:root{
+  --header-height: 120px; /* 想更高就改這裡，例如 140px */
+}
+
+*{ box-sizing: border-box; }
+
+body{
+  margin:0;
+  font-family: Arial, "Noto Sans TC", sans-serif;
+  line-height: 1.7;
+}
+
+/* 固定 Header */
+.site-header{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-height);
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  z-index: 999;
+}
+
+/* Header 內部排版 */
+.header-inner{
+  height: 100%;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 品牌 */
+.brand{
+  font-size: 22px;
+}
+
+/* nav 平均分散 */
+.main-nav{
+  display: flex;
+  justify-content: space-between; /* 平均分散 */
+  align-items: center;
+  gap: 10px;
+}
+
+.main-nav a{
+  text-decoration: none;
+  color: #222;
+  padding: 8px 10px;
+  border-radius: 8px;
+  display: inline-block;
+  flex: 1;                 /* 每個連結等寬 */
+  text-align: center;      /* 文字置中 */
+}
+
+.main-nav a.active{
+  font-weight: 700;
+}
+
+/* 防止內容被 header 蓋住 */
+.header-spacer{
+  height: var(--header-height);
+}
+
+/* 主視覺 */
+.hero{
+  width: 100%;
+}
+
+.hero-img{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 內容區 */
+.content{
+  padding: 18px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.block{
+  margin: 18px 0;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+/* ====== Slider (多張可視、可左右切換) ====== */
+.slider{
+  --visible: 1;            /* 手機預設顯示 1 張 */
+  --gap: 14px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+@media (min-width: 700px){
+  .slider{ --visible: 2; }
+}
+@media (min-width: 1024px){
+  .slider{ --visible: 3; }
+}
+
+.slider-viewport{
+  overflow: hidden;
+}
+
+.slider-track{
+  display: flex;
+  gap: var(--gap);
+  transform: translateX(0);
+  transition: transform .4s ease;
+  will-change: transform;
+}
+
+.slide{
+  flex: 0 0 calc((100% - (var(--gap) * (var(--visible) - 1))) / var(--visible));
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  background: #fff;
+}
+
+.slide img{
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  display: block;
+}
+
+.slider-btn{
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+  font-size: 26px;
+  line-height: 1;
+}
+.slider-btn:disabled{
+  opacity: .35;
+  cursor: not-allowed;
+}
