@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Carolie Calculator</title>
     <style>
-    @import url("style.css");
+    @import url("css/style.css");
     body {
             background-color: #2c3e50; /* 深色背景 */
             color: white;
@@ -64,15 +64,8 @@
         .checkbox_group {
             display: flex;
             flex-direction: column; /* 直向排列 */
-            align-items: center;    /* 置中 */
+            align-items: flex-start;    /* 置中 */
             margin-bottom: 20px;
-        }
-
-        .checkbox_group label {
-            font-size: 1.2rem;
-            margin: 8px;
-            cursor: pointer;
-            transition: 0.2s;
         }
 
         .checkbox_group label:hover {
@@ -141,8 +134,8 @@
 
     <div class="calculator_box">
             <h2>☑️ 今天吃了什麼？</h2>
-            <form id="diet-form">
-                <div class="checkbox-group">
+            <form id="diet_form">
+                <div class="checkbox_group">
                     <label><input type="checkbox" value="650" name="food"> 牛肉湯套餐 (650卡)</label>
                     <label><input type="checkbox" value="700" name="food"> 鱔魚意麵 (700卡)</label>
                     <label><input type="checkbox" value="800" name="food"> 棺材板 (800卡)</label>
