@@ -1,0 +1,25 @@
+/* 懸浮按鈕樣式 */
+.floating-home-btn {
+    position: fixed; /* 關鍵：固定在視窗上，不隨捲動消失 */
+    bottom: 30px;    /* 距離下面 30px */
+    right: 30px;     /* 距離右邊 30px */
+    
+    width: 60px;
+    height: 60px;
+    background-color: #e74c3c; /* 紅色按鈕 */
+    color: white;
+    
+    border-radius: 50%; /* 變成圓形 */
+    text-decoration: none; /* 去除底線 */
+    text-align: center;
+    line-height:60px; /* 讓 emoji 垂直置中 */
+    font-size: 10px;   /* 圖案大小 */
+    z-index: 999; /* 確保它在最上層 */
+}
+
+/* 滑鼠移過去的特效 */
+.floating-home-btn:hover {
+    transform: scale(1.1) rotate(-10deg); /* 放大並微微旋轉 */
+    background-color: gold; /* 變金色 */
+    box-shadow: 0 0 15px gold; /* 發光 */
+}
