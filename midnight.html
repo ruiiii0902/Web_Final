@@ -3,8 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>麵類介紹</title>
+  <title>宵夜店</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/foodData.js" defer></script>
+  <script src="js/foodtomap.js" defer></script>
+  <script defer>
+  document.addEventListener("DOMContentLoaded", () => {
+    initStoreDetail(food_midnight);
+  });
+</script>
 </head>
 <body>
 
@@ -29,11 +36,8 @@
             <a href="midnight.html">宵夜店</a>
           </div>
         </div>
-        <a href="page3.html">網頁3</a>
-        <a href="page4.html">網頁4</a>
-        <a href="page5.html">網頁5</a>
-        <a href="page6.html">網頁6</a>
-        <a href="page7.html">網頁7</a>
+        <a href="spin.html">美食拉霸機</a>
+        <a href="diet.html">罪惡計算機</a>
       </nav>
     </div>
   </header>
@@ -42,20 +46,47 @@
   <div class="header-spacer"></div>
 
   <main class="content">
-    <h2>台南麵類介紹</h2>
-    <p>台南的麵類料理種類豐富……（你要寫的內容）</p>
 
-    <h3>推薦店家</h3>
-    <ul>
-      <li>擔仔麵 —— 安平區經典小吃</li>
-      <li>意麵 —— 口感 Q 彈</li>
-      <li>鱔魚意麵 —— 台南必吃美食</li>
-    </ul>
+  <h2>台南美食詳細介紹</h2>
 
-    <h3>圖片展示</h3>
-    <img src="images/noodle1.jpg" style="width:100%;max-width:500px;">
-    <img src="images/noodle2.jpg" style="width:100%;max-width:500px;">
-  </main>
+  <div class="detail-layout">
+
+    <!-- 左側列表 + 詳細內容 -->
+    <section class="detail-left">
+      <h3>店家列表</h3>
+      <ul id="storeList" class="store-list"></ul>
+
+      <article class="store-detail">
+        <h2 id="storeName"></h2>
+        <p><strong>分類：</strong><span id="storeCategory"></span></p>
+        <p><strong>地區：</strong><span id="storeArea"></span></p>
+        <p><strong>地址：</strong><span id="storeAddress"></span></p>
+        <p><strong>推薦品項：</strong><span id="storeFood"></span></p>
+        <p><strong>價位：</strong><span id="storePrice"></span></p>
+        <p><strong>營業時間：</strong><span id="storeHours"></span></p>
+        <p id="storeIntro"></p>
+      </article>
+    </section>
+
+    <!-- 右側 Google Maps -->
+    <section class="detail-right">
+      <h3>地圖位置</h3>
+      <div class="map-wrapper">
+        <iframe
+          id="mapFrame"
+          src=""
+          width="100%" height="450"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </section>
+
+  </div>
+
+</main>
 
 </body>
 </html>
