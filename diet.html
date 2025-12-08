@@ -1,202 +1,233 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <title>Carolie Calculator</title>
-    <style>
-    @import url("css/style.css");
-    body {
-            background-color: #2c3e50; /* 深色背景 */
-            color: white;
-            text-align: center;
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 20px;
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>贖罪計算機 | IIM好食在</title>
+
+  <script src="js/index.js" defer></script>
+  
+  <style>
+    @import url('css/style.css');
+    
+    /* 表格樣式 */
+    .table-responsive {
+        overflow-x: auto; /* 手機板如果表格太寬可以滑動 */
+        margin-bottom: 30px;
     }
-    h1 {
-            font-family: 'Fredoka One', cursive;
-            margin-bottom: 30px;
-            color: #f1c40f;
-            text-shadow: 2px 2px 0px #5c2f02;
+    
+    .calorie-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #fff;
+        color: #333;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
-    .table_container {
-            margin: 20px auto;
-            max-width: 600px;
+    .calorie-table th, .calorie-table td {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+        text-align: left;
     }
 
-    .calorie_table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: #34495e; /* 表格底色 */
-            color: white;
-            border-radius: 10px;
-            overflow: hidden;
+    .calorie-table th {
+        background-color: #e67e22; /* 橘色標題 */
+        color: white;
     }
 
-    .calorie_table th, .calorie-table td {
-            padding: 12px;
-            border-bottom: 1px solid #1a2020;
+    .calorie-table tr:nth-child(even) {
+        background-color: #f9f9f9; /* 斑馬紋 */
     }
 
-    .calorie_table th {
-            background-color: #e08636; /* 橘色標題 */
-            font-size: 1.1rem;
+    .calorie-table tr:hover {
+        background-color: #fff3cd; /* 滑鼠移過變黃 */
     }
 
+    /* 表單區塊 */
+    .calculator-box {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .checkbox-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* 靠左對齊 */
+        width: fit-content;
+        margin: 0 auto 20px auto; /* 區塊置中 */
+    }
+
+    .checkbox-group label {
+        font-size: 1.1rem;
+        margin: 8px 0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+    
+    .checkbox-group input {
+        margin-right: 10px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .calc-btn {
+        display: block;
+        margin: 0 auto;
+        padding: 10px 30px;
+        font-size: 1.2rem;
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    
+    .calc-btn:hover {
+        background-color: #c0392b;
+    }
+
+    /* 結果框 */
     .result-box {
-            margin: 20px auto; /* 居中 */
-            max-width: 400px;  /* 限制寬度 */
-            border: 3px dashed #e74c3c;
-            padding: 20px;
-            background-color: white;
-            color: #333;
-            border-radius: 10px;
+        margin-top: 20px;
+        border: 3px dashed #e74c3c;
+        padding: 20px;
+        background-color: #fff;
+        text-align: center;
     }
 
     .highlight {
-        font-size: 2rem;
+        font-size: 1.5rem;
         font-weight: bold;
         color: #c0392b;
     }
+  </style>
+</head>
 
-    /* 3. Checkbox 選單排版 */
-        .checkbox_group {
-            display: flex;
-            flex-direction: column; /* 直向排列 */
-            align-items: flex-start;    /* 置中 */
-            margin-bottom: 20px;
-        }
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <strong>IIM好食在</strong>
+      </div>
 
-        .checkbox_group label:hover {
-            color: #f1c40f;
-            transform: scale(1.05); /* 微微放大 */
-        }
-
-        /* 按鈕樣式 (計算按鈕) */
-        button {
-            padding: 10px 30px;
-            font-size: 1.2rem;
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 5px 0 #c0392b;
-            transition: transform 0.1s;
-        }
-        button:active {
-            transform: translateY(4px);
-            box-shadow: 0 1px 0 #c0392b;
-        }
-
-        /* 4. 結果框框 (像罰單) */
-        .result_box {
-            margin: 20px auto; /* 居中 */
-            max-width: 400px;  /* 限制寬度 */
-            border: 3px dashed #e74c3c;
-            padding: 20px;
-            background-color: white;
-            color: #333;
-            border-radius: 10px;
-        }
-
-        .highlight {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #c0392b;
-        }
-    </style>
-    
-    <body>
-    <div class = "container">
-        <h1>🏃‍♀️贖罪計算機🏃‍♀️</h1>
-    </div>
-    
-    <div class = "table_container">
-        <table class="calorie_table">
-            <thead style="border: 1px;">
-                <tr>
-                    <th>食物種類</th>
-                    <th>熱量(大卡)</th>
-                    <th>跑步時間(分鐘)</th>
-                </tr>
-                <tbody>
-                    <tr><td>牛肉湯 (含肉燥飯)</td><td>650</td><td>80 分</td></tr>
-                    <tr><td>鱔魚意麵</td><td>700</td><td>90 分</td></tr>
-                    <tr><td>炸蝦捲 (一份)</td><td>450</td><td>55 分</td></tr>
-                    <tr><td>棺材板</td><td>800</td><td>100 分</td></tr>
-                    <tr><td>全糖手搖飲</td><td>500</td><td>65 分</td></tr>
-                </tbody>
-            </thead>
-        </table>
-    </div>
-
-    <div class="calculator_box">
-            <h2>☑️ 今天吃了什麼？</h2>
-            <form id="diet_form">
-                <div class="checkbox_group">
-                    <label><input type="checkbox" value="650" name="food"> 牛肉湯套餐 (650卡)</label>
-                    <label><input type="checkbox" value="700" name="food"> 鱔魚意麵 (700卡)</label>
-                    <label><input type="checkbox" value="800" name="food"> 棺材板 (800卡)</label>
-                    <label><input type="checkbox" value="350" name="food"> 丹丹漢堡炸雞 (350卡)</label>
-                    <label><input type="checkbox" value="500" name="food"> 全糖波霸奶茶 (500卡)</label>
-                    <label><input type="checkbox" value="300" name="food"> 文章牛肉湯-小碗 (300卡)</label>
-                </div>
-                
-                <button type="button" onclick="calculateGuilt()">☠️ 開始結算</button>
-            </form>
-
-            <div id="result_area" class="result_box" style="display: none;">
-                <h3>📑 您的贖罪帳單</h3>
-                <p>總攝取熱量：<span id="total-kcal" class="highlight">0</span> kcal</p>
-                <p>約等於跑步：<span id="run-min" class="highlight">0</span> 分鐘</p>
-                <hr>
-                <p id="funny-comment">評語載入中...</p>
-            </div>
+      <nav class="main-nav" aria-label="主選單">
+        <a href="index.html">首頁</a>
+        <div class="dropdown">
+          <button class="dropbtn">食物種類 ▼</button>
+          <div class="dropdown-content">
+            <a href="tainan.html">台南特色美食</a>
+            <a href="ramen.html">拉麵</a>
+            <a href="japaness.html">丼飯 & 日式料理</a>
+            <a href="noodles.html">鍋燒意麵</a>
+            <a href="beef_soup.html">牛肉湯專區</a>
+            <a href="midnight.html">宵夜店</a>
+          </div>
         </div>
+        <a href="Spin.html">美食拉霸機</a>
+        <a href="diet.html" class="active">贖罪計算機</a>
+      </nav>
+    </div>
+  </header>
 
-    <a href="index.html" class="floating_home_btn" title="回主畫面">⬅ 回主頁</a>
-    <script>
-        function calculateGuilt() {
-            // 1. 抓取所有被勾選 (checked) 的項目
-            const checkboxes = document.querySelectorAll('input[name="food"]:checked');
+  <div class="header-spacer"></div>
+
+  <section class="hero">
+    <img src="image/tainan_map.jpg" alt="主視覺" class="hero-img">
+  </section>
+
+  <main class="content">
+    <h2>吃貨贖罪計算機</h2>
+
+    <section class="block">
+      <h3>熱量價目表</h3>
+      <p>出來混，遲早要還的。面對現實吧！看看你剛剛吃下的美食需要跑多久才能消耗掉。</p>
+      
+      <div class="table-responsive">
+        <table class="calorie-table">
+            <thead>
+                <tr>
+                    <th>罪惡美食</th>
+                    <th>熱量 (大卡)</th>
+                    <th>跑步代價 (分)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>牛肉湯 (含肉燥飯)</td><td>650</td><td>80 分</td></tr>
+                <tr><td>鱔魚意麵</td><td>700</td><td>90 分</td></tr>
+                <tr><td>炸蝦捲 (一份)</td><td>450</td><td>55 分</td></tr>
+                <tr><td>棺材板</td><td>800</td><td>100 分</td></tr>
+                <tr><td>全糖手搖飲</td><td>500</td><td>65 分</td></tr>
+                <tr><td>丹丹漢堡套餐</td><td>950</td><td>120 分</td></tr>
+            </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="block">
+      <h3>誠實面對區</h3>
+      <div class="calculator-box">
+        <form id="diet-form">
+            <div class="checkbox-group">
+                <label><input type="checkbox" value="650" name="food"> 牛肉湯套餐 (650卡)</label>
+                <label><input type="checkbox" value="700" name="food"> 鱔魚意麵 (700卡)</label>
+                <label><input type="checkbox" value="800" name="food"> 棺材板 (800卡)</label>
+                <label><input type="checkbox" value="350" name="food"> 炸雞 (350卡)</label>
+                <label><input type="checkbox" value="500" name="food"> 全糖波霸奶茶 (500卡)</label>
+                <label><input type="checkbox" value="300" name="food"> 小碗牛肉湯 (300卡)</label>
+            </div>
             
-            let totalCalories = 0;
+            <button type="button" class="calc-btn" onclick="calculateGuilt()">☠️ 開始結算</button>
+        </form>
 
-            // 2. 用迴圈把熱量加總
-            checkboxes.forEach((item) => {
-                // parseInt 把文字 "650" 轉成數字 650
-                totalCalories += parseInt(item.value);
-            });
+        <div id="result-area" class="result-box" style="display: none;">
+            <h3>📊 您的贖罪帳單</h3>
+            <p>總攝取熱量：<span id="total-kcal" class="highlight">0</span> kcal</p>
+            <p>約等於跑步：<span id="run-min" class="highlight">0</span> 分鐘</p>
+            <hr>
+            <p id="funny-comment">評語載入中...</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-            // 3. 計算跑步時間 (假設每分鐘消耗 8 卡)
-            const runTime = Math.round(totalCalories / 8);
+  <script>
+    function calculateGuilt() {
+        const checkboxes = document.querySelectorAll('input[name="food"]:checked');
+        let totalCalories = 0;
 
-            // 4. 把數字顯示在畫面上
-            document.getElementById('total-kcal').innerText = totalCalories;
-            document.getElementById('run-min').innerText = runTime;
-            
-            // 5. 毒舌評語邏輯
-            const commentP = document.getElementById('funny-comment');
-            
-            if (totalCalories === 0) {
-                commentP.innerText = "🤨 你是來台南修行的嗎？竟然什麼都沒吃！";
-                commentP.style.color = "#2ecc71"; // 綠色
-            } else if (totalCalories < 1000) {
-                commentP.innerText = "👌 還好還好，散步一下就消耗掉了。";
-                commentP.style.color = "#f39c12"; // 橘黃色
-            } else if (totalCalories < 2000) {
-                commentP.innerText = "⚠️ 注意！你的肚子已經稍微凸出來囉！";
-                commentP.style.color = "#e67e22"; // 深橘色
-            } else {
-                commentP.innerText = "🚨 太誇張了！請直接從安平跑回火車站贖罪！";
-                commentP.style.color = "#c0392b"; // 紅色
-            }
+        checkboxes.forEach((item) => {
+            totalCalories += parseInt(item.value);
+        });
 
-            // 6. 顯示結果框框
-            document.getElementById('result-area').style.display = "block";
+        const runTime = Math.round(totalCalories / 8);
+
+        document.getElementById('total-kcal').innerText = totalCalories;
+        document.getElementById('run-min').innerText = runTime;
+        
+        const commentP = document.getElementById('funny-comment');
+        
+        if (totalCalories === 0) {
+            commentP.innerText = "🤨 你是來台南修行的嗎？竟然什麼都沒吃！";
+            commentP.style.color = "#2ecc71"; 
+        } else if (totalCalories < 1000) {
+            commentP.innerText = "👌 還好還好，散步一下就消耗掉了。";
+            commentP.style.color = "#f39c12"; 
+        } else if (totalCalories < 2000) {
+            commentP.innerText = "⚠️ 注意！你的肚子已經稍微凸出來囉！";
+            commentP.style.color = "#e67e22"; 
+        } else {
+            commentP.innerText = "🚨 太誇張了！請直接從安平跑回火車站贖罪！";
+            commentP.style.color = "#c0392b"; 
         }
-    </script>
-    </body>
+
+        document.getElementById('result-area').style.display = "block";
+    }
+  </script>
+</body>
 </html>
