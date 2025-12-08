@@ -1,0 +1,110 @@
+const food_tainan = [
+  {
+    id: "tainan-01",
+    name: "七海魚肚魚皮專賣店",
+    area: "東區",
+    category: "虱目魚午晚餐",
+    address: "台南市東區東門路三段177號",
+    food: "魚皮湯、魚肚湯、肉燥飯",
+    price: "80-150 $",
+    businessHours: "一、三～日 06:00–20:00（週二公休）",
+    intro: "在地人氣虱目魚專賣店，魚湯鮮甜、肉燥飯平價，是老台南人愛的早餐選擇。",
+    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29382.93779199843!2d120.18711787910152!3d22.991909500000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e7696a35f8e99%3A0xbbbe72bf0a7fc540!2z5LiD5rW36a2a55qu!5e0!3m2!1szh-TW!2stw!4v1765193577188!5m2!1szh-TW!2stw"
+  },
+  {
+    id: "tainan-02",
+    name: "王氏魚皮",
+    area: "安平區",
+    category: "安平必吃",
+    address: "台南市安平區安平路612號",
+    food: "魚皮湯、煎魚腸、魚肚湯、肉燥飯",
+    price: "120-200 $",
+    businessHours: "一～五 04:00–14:00；六、日 04:00–15:00",
+    intro: "安平老字號虱目魚專賣店，魚皮湯與煎魚腸是招牌，常獲米其林必比登推薦。",
+    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.6745034119176!2d120.16402478178924!3d22.998993863570536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e761ac0ceaf85%3A0x6ccc24c6324363a7!2z546L5rCP6a2a55qu5aSW5bi26aCQ5a6a57ea5LiK6bue6aSQ5YWN5o6S6ZqKZm9vZCBwYW5kYSBVYmVyIGVhdHPlkIzmraXnh5_mpa3kuK0!5e0!3m2!1szh-TW!2stw!4v1765193734937!5m2!1szh-TW!2stw"
+  },
+  {
+    id: "tainan-03",
+    name: "阿文米粿",
+    area: "中西區",
+    category: "國華街必吃",
+    address: "台南市中西區保安路74號",
+    food: "米粿、米糕、四神湯",
+    price: "60-140 $",
+    businessHours: "每日 08:00–20:00",
+    intro: "連年米其林必比登推薦的小吃，外酥內Q的米粿是招牌，許多在地人推薦。",
+    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.906022746553!2d120.1935072753422!3d22.990483017524863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e767ae409a251%3A0x7e2395335721d290!2z6Zi_5paH57Gz57K_!5e0!3m2!1szh-TW!2stw!4v1765193840104!5m2!1szh-TW!2stw"
+  },
+  {
+    id: "tainan-04",
+    name: "開元紅燒土魠魚羹",
+    area: "北區",
+    category: "米其林小吃",
+    address: "台南市北區開元路307號",
+    food: "紅燒土魠魚羹、肉燥飯、滷豆腐",
+    price: "80-160 $",
+    businessHours: "每日 09:00–18:30",
+    intro: "知名紅燒土魠魚羹老店，魚塊外酥內嫩、湯頭濃郁，是台南人從早餐吃到晚餐的人氣店。",
+    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.426583244809!2d120.21883877534269!3d23.008104316867875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e76ef5ea61ee5%3A0x21876f36dbb99d01!2z6ZaL5YWD57SF54eS8Km1mumtoOmtmue-ue-8iDEyLzPjgIE05LyR5oGv77yJ!5e0!3m2!1szh-TW!2stw!4v1765193936655!5m2!1szh-TW!2stw"
+  },
+  {
+    id: "tainan-05",
+    name: "後甲圓環無名虱目魚肉燥飯",
+    area: "東區",
+    category: "宵夜場",
+    address: "台南市東區裕農路501號",
+    food: "肉燥飯、虱目魚粥、蚵仔湯",
+    price: "70-150 $",
+    businessHours: "每日 00:00–13:30、17:00–24:00",
+    intro: "開到半夜的在地宵夜店，虱目魚與肉燥飯評價都很高，是後甲圓環附近的人氣小吃。",
+    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.9599679686207!2d120.22997017534206!3d22.988499517598683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e76bc6b53a2af%3A0x8fc0205cb80e2305!2z5b6M55Sy5ZyT55KwLeeEoeWQjeiZseebrumtmuiCieeHpemjrw!5e0!3m2!1szh-TW!2stw!4v1765193992959!5m2!1szh-TW!2stw"
+  },
+  {
+    id: "tainan-06",
+    name: "無名米糕（炮店米糕）",
+    area: "中西區",
+    category: "中山路巷弄小吃",
+    address: "台南市中西區中山路8巷5號",
+    food: "米糕、肉燥魚鬆飯、綜合湯",
+    price: "60-120 $",
+    businessHours: "一～六 09:30–15:00、17:00–20:00（週日公休）",
+    intro: "躲在巷子裡的排隊米糕老店，銅板價就能吃到香Q米糕與台南味湯品。",
+    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.8457163785424!2d120.20341677534215!3d22.99270021744227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e768832a345f5%3A0x3054493bc30f84f5!2z54Sh5ZCN57Gz57OV!5e0!3m2!1szh-TW!2stw!4v1765194427509!5m2!1szh-TW!2stw"
+  },
+  {
+    id: "tainan-07",
+    name: "鼎富發豬油拌飯",
+    area: "中西區",
+    category: "豬油拌飯專門",
+    address: "台南市中西區大德街38號",
+    food: "豬油拌飯、滷肉飯、小菜",
+    price: "80-150 $",
+    businessHours: "每日 10:30–19:30",
+    intro: "以豬油拌飯聞名的排隊小吃，香氣十足但不膩口，價格親民、份量實在。",
+    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.9328041690333!2d120.19312197534214!3d22.989498317561537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e767a5787e2eb%3A0xf1654c4cccd5968f!2z6byO5a-M55m86LGs5rK55ouM6aOv!5e0!3m2!1szh-TW!2stw!4v1765194116538!5m2!1szh-TW!2stw"
+  },
+  {
+    id: "tainan-08",
+    name: "丹丹漢堡（成功店）",
+    area: "北區",
+    category: "南部速食",
+    address: "台南市北區成功路380號",
+    food: "雞腿堡、赤肉麵線羹、炸雞套餐",
+    price: "70-150 $",
+    businessHours: "07:00–22:00（週三公休）",
+    intro: "南部限定速食連鎖品牌，成功店鄰近熱鬧商圈，套餐結合炸雞、漢堡與麵線羹，CP值高，是很多人來台南指定要吃的速食店。",
+    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.641454754855!2d120.19762177534238!3d23.000208517162378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e7660c516affb%3A0xf8e499ee591033fa!2z5Li55Li55ryi5aChIOaIkOWKn-W6lw!5e0!3m2!1szh-TW!2stw!4v1765194168730!5m2!1szh-TW!2stw"
+  },
+  {
+    id: "tainan-09",
+    name: "黃家鱔魚意麵",
+    area: "中西區",
+    category: "國華街一帶小吃",
+    address: "台南市中西區民權路三段46號",
+    food: "鱔魚意麵、乾炒鱔魚、四神湯、米糕",
+    price: "80-180 $",
+    businessHours: "每日 16:00–24:00",
+    intro: "永樂市場附近的老字號鱔魚意麵，鍋氣十足、甜鹹台南味，是晚上很熱門的宵夜選擇。",
+    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.742843958534!2d120.19589407534235!3d22.99648191730128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e76641bad50eb%3A0xf95510e2d473f31a!2z6buD5a626bGU6a2a5oSP6bq1!5e0!3m2!1szh-TW!2stw!4v1765194282450!5m2!1szh-TW!2stw"
+  }
+];

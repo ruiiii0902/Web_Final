@@ -221,3 +221,57 @@ body{
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+/* 詳細介紹頁：左右排版 */
+.detail-layout{
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.detail-left{
+  flex: 1;
+}
+
+.detail-right{
+  flex: 1;
+}
+
+.store-list{
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.store-list li{
+  margin-bottom: 8px;
+}
+
+.store-btn{
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #f7f7f7;
+  cursor: pointer;
+  text-align: left;
+  font-size: 16px;
+}
+
+.store-btn.active{
+  background: #ffe2c6;
+  border-color: #ffa44d;
+}
+
+.map-wrapper{
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* RWD 手機版：上下排列 */
+@media (max-width: 768px){
+  .detail-layout{
+    flex-direction: column;
+  }
+}
