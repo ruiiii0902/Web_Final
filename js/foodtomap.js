@@ -1,7 +1,5 @@
-
 (function(){
 
-  // 專門初始化店家介紹頁
   function initStoreDetail(dataArray) {
 
     const listEl   = document.getElementById("storeList");
@@ -12,13 +10,13 @@
     const addrEl   = document.getElementById("storeAddress");
     const foodEl   = document.getElementById("storeFood");
     const priceEl  = document.getElementById("storePrice");
-    const introEl  = document.getElementById("storeIntro");
     const hoursEl  = document.getElementById("storeHours");
+    const introEl  = document.getElementById("storeIntro");
     const mapFrame = document.getElementById("mapFrame");
 
     if (!listEl || !mapFrame || !Array.isArray(dataArray)) return;
 
-    // 左側店家列表產生
+    // 建立左側列表（僅建立一次）
     listEl.innerHTML = "";
     dataArray.forEach((store, idx) => {
       const li = document.createElement("li");
@@ -35,7 +33,7 @@
       listEl.appendChild(li);
     });
 
-    // 顯示資料
+    // 顯示店家資訊（只更新 table + map）
     function showStore(storeId){
       const store = dataArray.find(s => s.id === storeId);
       if (!store) return;
@@ -52,7 +50,7 @@
       mapFrame.src = store.mapEmbed;
     }
 
-    // 點左側切換資料
+    // 左側按鈕 → 切換地圖 + 更新表格資料
     listEl.addEventListener("click", (e) => {
       const btn = e.target.closest(".store-btn");
       if (!btn) return;
@@ -63,13 +61,12 @@
       showStore(btn.dataset.id);
     });
 
-    // 預設顯示第一間
+    // 預設顯示第一項
     if (dataArray.length > 0) {
       showStore(dataArray[0].id);
     }
   }
 
-  // 暴露到全域，以便各個頁面呼叫
   window.initStoreDetail = initStoreDetail;
 
 })();

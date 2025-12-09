@@ -1,92 +1,231 @@
-:root{
-  --header-height: 120px; /* 想更高就改這裡，例如 140px */
+/* =========================================
+   台南復古配色
+========================================= */
+:root {
+  --header-height: 130px;
+
+  --main-red: #b4452a;        /* 赤赭紅 */
+  --light-red: #c85c38;       /* 台南磚紅 */
+  --paper-bg: #faf6ef;        /* 淡奶茶復古底 */
+  --soft-yellow: #f2e6c4;     /* 淺復古黃 */
+  --dark-coffee: #8c6f5a;     /* 咖啡線條 */
+  --text-dark: #453728;       /* 深咖啡字色 */
 }
 
-*{ box-sizing: border-box; }
-
-body{
-  margin:0;
-  font-family: Arial, "Noto Sans TC", sans-serif;
-  line-height: 1.7;
+* {
+  box-sizing: border-box;
 }
 
-/* 固定 Header */
-.site-header{
+body {
+  margin: 0;
+  background: var(--paper-bg);
+  font-family: "Noto Sans TC", Arial, sans-serif;
+  color: var(--text-dark);
+  line-height: 1.75;
+}
+
+/* =========================================
+   Header（復古台南感）
+========================================= */
+
+.site-header {
   position: fixed;
   top: 0; left: 0; right: 0;
   height: var(--header-height);
-  background: #fff;
-  border-bottom: 1px solid #ddd;
+  background: var(--soft-yellow);
+  border-bottom: 2px solid var(--dark-coffee);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.12);
   z-index: 999;
 }
 
-/* Header 內部排版 */
-.header-inner{
+.header-inner {
   height: 100%;
-  padding: 16px 20px;
   display: flex;
   flex-direction: column;
+  padding: 14px 20px;
   gap: 12px;
 }
 
-/* 品牌 */
-.brand{
-  font-size: 22px;
+.brand {
+  font-size: 26px;
+  font-weight: bold;
+  color: var(--main-red);
+  letter-spacing: 2px;
 }
 
-/* nav 平均分散 */
-.main-nav{
+/* =========================================
+   NAV（平均分散 + 復古按鈕）
+========================================= */
+
+.main-nav {
   display: flex;
-  justify-content: space-between; /* 平均分散 */
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
 }
 
-.main-nav a{
+.main-nav a,
+.dropbtn {
+  flex: 1;
+  padding: 8px 12px;
+  text-align: center;
   text-decoration: none;
-  color: #222;
-  padding: 8px 10px;
+  color: var(--text-dark);
+  background: var(--paper-bg);
+  border: 1px solid var(--dark-coffee);
   border-radius: 8px;
-  display: inline-block;
-  flex: 1;                 /* 每個連結等寬 */
-  text-align: center;      /* 文字置中 */
+  font-weight: 600;
+  transition: 0.15s ease-in-out;
 }
 
-.main-nav a.active{
-  font-weight: 700;
+.main-nav a:hover,
+.dropbtn:hover {
+  background: var(--light-red);
+  color: #fff;
+  border-color: var(--main-red);
 }
 
-/* 防止內容被 header 蓋住 */
-.header-spacer{
-  height: var(--header-height);
+.main-nav a.active {
+  background: var(--main-red);
+  color: white;
 }
 
-/* 主視覺 */
-.hero{
+/* 下拉選單 */
+.dropdown {
+  position: relative;
+  flex: 1;
+}
+
+/* 讓「種類介紹」按鈕跟其他 nav 一樣寬 */
+.dropbtn {
   width: 100%;
+  display: block;  
+  padding: 8px 12px; 
+  line-height: 1.75;
 }
 
-.hero-img{
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: var(--paper-bg);
+  border: 1px solid var(--dark-coffee);
+  border-radius: 8px;
   width: 100%;
-  height: auto;
+  z-index: 1000;
+}
+
+.dropdown-content a {
+  padding: 10px;
+  display: block;
+  color: var(--text-dark);
+  text-decoration: none;
+  border-bottom: 1px solid #e5d8c6;
+}
+
+.dropdown-content a:hover {
+  background: var(--light-red);
+  color: white;
+}
+
+.dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* 內容區 */
-.content{
-  padding: 18px 20px;
+.header-spacer {
+  height: var(--header-height);
+}
+
+/* =========================================
+   內容區
+========================================= */
+
+.content {
+  padding: 20px;
   max-width: 1100px;
   margin: 0 auto;
 }
 
-.block{
-  margin: 18px 0;
-  padding: 12px 0;
-  border-bottom: 1px solid #eee;
+/* =========================================
+   店家詳細介紹頁
+========================================= */
+
+.detail-layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
 }
-/* ====== Slider (多張可視、可左右切換) ====== */
-.slider{
-  --visible: 1;            /* 手機預設顯示 1 張 */
+
+.detail-left,
+.detail-right {
+  flex: 1;
+}
+
+/* 左側店家按鈕 */
+.store-btn {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--soft-yellow);
+  border: 1px solid var(--dark-coffee);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: left;
+  transition: 0.15s;
+}
+
+.store-btn:hover {
+  background: var(--light-red);
+  color: white;
+}
+
+.store-btn.active {
+  background: var(--main-red);
+  color: white;
+  border-color: var(--dark-coffee);
+}
+
+/* 表格呈現店家資訊 */
+.store-table {
+  width: 100%;
+  margin: 14px 0;
+  border-collapse: collapse;
+  background: #fffdf6;
+  border: 1px solid var(--dark-coffee);
+}
+
+.store-table th {
+  width: 110px;
+  padding: 10px;
+  background: var(--soft-yellow);
+  border: 1px solid var(--dark-coffee);
+  text-align: left;
+}
+
+.store-table td {
+  padding: 10px;
+  border: 1px solid var(--dark-coffee);
+}
+
+.store-intro {
+  margin-top: 12px;
+  font-size: 15px;
+}
+
+/* 地圖外框 */
+.map-wrapper {
+  border: 2px solid var(--dark-coffee);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* =========================================
+   Slider（你的幻燈片）
+========================================= */
+
+.slider {
+  --visible: 1;
   --gap: 14px;
   position: relative;
   display: grid;
@@ -96,41 +235,40 @@ body{
   margin-top: 10px;
 }
 
-@media (min-width: 700px){
-  .slider{ --visible: 2; }
+@media (min-width: 700px) {
+  .slider { --visible: 2; }
 }
-@media (min-width: 1024px){
-  .slider{ --visible: 3; }
+@media (min-width: 1024px) {
+  .slider { --visible: 3; }
 }
 
-.slider-viewport{
+.slider-viewport {
   overflow: hidden;
 }
 
-.slider-track{
+.slider-track {
   display: flex;
   gap: var(--gap);
   transform: translateX(0);
   transition: transform .4s ease;
-  will-change: transform;
 }
 
-.slide{
+.slide {
   flex: 0 0 calc((100% - (var(--gap) * (var(--visible) - 1))) / var(--visible));
   border-radius: 14px;
-  overflow: hidden;
   border: 1px solid #eee;
+  overflow: hidden;
   background: #fff;
 }
 
-.slide img{
+.slide img {
   width: 100%;
   height: 170px;
-  object-fit: cover;
   display: block;
+  object-fit: cover;
 }
 
-.slider-btn{
+.slider-btn {
   width: 48px;
   height: 48px;
   border-radius: 14px;
@@ -140,138 +278,50 @@ body{
   font-size: 26px;
   line-height: 1;
 }
-.slider-btn:disabled{
+
+.slider-btn:disabled {
   opacity: .35;
-  cursor: not-allowed;
 }
 
+/* =========================================
+   懸浮回首頁按鈕
+========================================= */
 
-/* 懸浮按鈕樣式 */
 .floating_home_btn {
-    position: fixed; /* 關鍵：固定在視窗上，不隨捲動消失 */
-    bottom: 30px;    /* 距離下面 30px */
-    right: 30px;     /* 距離右邊 30px */
-    
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+
     width: 60px;
     height: 60px;
-    background-color: #e74c3c; /* 紅色按鈕 */
+    background-color: #e74c3c;
     color: white;
-    
-    border-radius: 50%; /* 變成圓形 */
-    text-decoration: none; /* 去除底線 */
+
+    border-radius: 50%;
+    text-decoration: none;
     text-align: center;
-    line-height:60px; /* 讓 emoji 垂直置中 */
-    font-size: 12px;   /* 圖案大小 */
-    z-index: 999; /* 確保它在最上層 */
+    line-height: 60px;
+    font-size: 12px;
+
+    z-index: 999;
+    transition: 0.2s;
 }
 
-/* 滑鼠移過去的特效 */
-.floating-_home_btn:hover {
-    transform: scale(1.1) rotate(-10deg); /* 放大並微微旋轉 */
-    background-color: gold; /* 變金色 */
-    box-shadow: 0 0 15px gold; /* 發光 */
-}
-/* ===== 下拉選單 Dropdown ===== */
-.dropdown {
-  position: relative;
-  display: inline-block;
-  flex: 1;
-  text-align: center;
+.floating_home_btn:hover {
+    transform: scale(1.1) rotate(-10deg);
+    background-color: gold;
+    box-shadow: 0 0 15px gold;
 }
 
-.dropbtn {
-  width: 100%;
-  padding: 8px 10px;
-  border: none;
-  background: none;
-  font-size: 16px;
-  cursor: pointer;
-}
+/* =========================================
+   手機 RWD
+========================================= */
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  top: 36px;
-  left: 0;
-  min-width: 140px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  z-index: 1000;
-  border-radius: 8px;
-}
-
-.dropdown-content a {
-  display: block;
-  padding: 10px;
-  text-align: left;
-  color: #333;
-  text-decoration: none;
-  border-bottom: 1px solid #eee;
-}
-
-.dropdown-content a:last-child {
-  border-bottom: none;
-}
-
-.dropdown-content a:hover {
-  background-color: #f2f2f2;
-}
-
-/* 滑鼠移入展開 */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* 詳細介紹頁：左右排版 */
-.detail-layout{
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-}
-
-.detail-left{
-  flex: 1;
-}
-
-.detail-right{
-  flex: 1;
-}
-
-.store-list{
-  list-style: none;
-  padding: 0;
-  margin-bottom: 20px;
-}
-
-.store-list li{
-  margin-bottom: 8px;
-}
-
-.store-btn{
-  width: 100%;
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  background: #f7f7f7;
-  cursor: pointer;
-  text-align: left;
-  font-size: 16px;
-}
-
-.store-btn.active{
-  background: #ffe2c6;
-  border-color: #ffa44d;
-}
-
-.map-wrapper{
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-/* RWD 手機版：上下排列 */
-@media (max-width: 768px){
-  .detail-layout{
+@media (max-width: 768px) {
+  .detail-layout {
+    flex-direction: column;
+  }
+  .main-nav {
     flex-direction: column;
   }
 }
