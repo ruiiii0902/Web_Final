@@ -1,0 +1,114 @@
+/* Spin page specific styles */
+.slot-machine-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.slot-window {
+  width: 300px;
+  height: 100px;
+  background-color: white;
+  color: #333;
+  margin: 20px auto;
+  border-radius: 10px;
+  border: 2px solid #f1c40f; /* 金色邊框 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.action-btn {
+  padding: 15px 40px;
+  font-size: 1.5rem;
+  background-color: chocolate; /* 紅色按鈕 */
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer; /* 手型游標 */
+  box-shadow: 0 5px 0 #4d2301;
+  transition: transform 0.1s;
+  margin-bottom: 20px;
+}
+
+.action-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 #c0392b;
+}
+
+.list-settings {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* Fixed centered page title (置中且固定於視窗) */
+.fixed-title {
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(var(--header-height) + 10px); /* 與 header 保持間距 */
+  z-index: 20;
+  margin: 0;
+  background: transparent;
+  padding: 0.2rem 0.6rem;
+}
+
+.spin-page {
+  padding-top: 70px; /* 讓內容避開固定標題 */
+}
+
+.list-settings h4 {
+  margin-bottom: 8px;
+}
+
+.add-form {
+  margin-top: 12px;
+  display: grid;
+  gap: 8px;
+}
+
+.add-form input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.add-form button {
+  padding: 10px 16px;
+  background: #b4452a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.add-form button:hover {
+  background: #c85c38;
+}
+
+.options-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  font-size: 0.95rem;
+}
+
+.options-table th,
+.options-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  background: #fff;
+}
+
+.options-table th {
+  background: #f2e6c4;
+}
+
+.spin-intro {
+  text-align: center;
+}
