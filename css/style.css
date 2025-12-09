@@ -2,7 +2,7 @@
    台南復古配色
 ========================================= */
 :root {
-  --header-height: 130px;
+  --header-height: auto;
 
   --main-red: #b4452a;        /* 赤赭紅 */
   --light-red: #c85c38;       /* 台南磚紅 */
@@ -32,13 +32,14 @@ body {
 .logo-img {
   height: 50px;        /* 建議 50–70px，可依需求調整 */
   width: auto;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
+
 }
 .site-header {
   position: fixed;
   top: 0; left: 0; right: 0;
-  height: var(--header-height);
+  min-height: 80px ;
   background: var(--soft-yellow);
   border-bottom: 2px solid var(--dark-coffee);
   box-shadow: 0 3px 6px rgba(0,0,0,0.12);
@@ -46,7 +47,6 @@ body {
 }
 
 .header-inner {
-  height: 100%;
   display: flex;
   flex-direction: column;
   padding: 14px 20px;
@@ -142,20 +142,6 @@ body {
 
 .header-spacer {
   height: var(--header-height);
-}
-
-.hero {
-  width: 100%;
-  height: calc(100vh - var(--header-height));
-  min-height: 420px;
-  overflow: hidden;
-}
-
-.hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
 }
 
 /* =========================================

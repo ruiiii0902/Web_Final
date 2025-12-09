@@ -92,7 +92,7 @@
 
     const finalChoice = foods[Math.floor(Math.random() * foods.length)];
 
-    resultText.innerText = '🍀 ' + finalChoice + ' 🍀';
+    resultText.innerText = finalChoice;
     isSpinning = false;
     btn.innerText = '再抽一次';
     btn.style.backgroundColor = '#e74c3c';

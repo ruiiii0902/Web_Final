@@ -12,15 +12,16 @@
     
     /* 表格樣式 */
     .table-responsive {
-        overflow-x: auto; /* 手機板如果表格太寬可以滑動 */
         margin-bottom: 30px;
     }
     
     .calorie-table {
-        width: 100%;
+        width: 45%;
+        margin-left: 30px;
+        float: left;
         border-collapse: collapse;
         background-color: #fff;
-        color: #333;
+        color: hsl(0, 0%, 20%);
         border-radius: 8px;
         overflow: hidden;
         box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -47,6 +48,9 @@
 
     /* 表單區塊 */
     .calculator-box {
+        width: 45%;
+        float: right;
+        margin-right: 30px; 
         background-color: #fff;
         padding: 20px;
         border-radius: 8px;
@@ -58,12 +62,11 @@
         flex-direction: column;
         align-items: flex-start; /* 靠左對齊 */
         width: fit-content;
-        margin: 0 auto 20px auto; /* 區塊置中 */
+        margin: 0 0 20px 0; 
     }
 
     .checkbox-group label {
         font-size: 1.1rem;
-        margin: 8px 0;
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -77,7 +80,7 @@
 
     .calc-btn {
         display: block;
-        margin: 0 auto;
+        margin: auto ;
         padding: 10px 30px;
         font-size: 1.2rem;
         background-color: #e74c3c;
@@ -113,7 +116,7 @@
   <header class="site-header">
     <div class="header-inner">
       <div class="brand">
-        <strong>IIM好食在</strong>
+        <img src="image/IIM_logo.png" alt="IIM好食在 Logo" class="logo-img">
       </div>
 
       <nav class="main-nav" aria-label="主選單">
@@ -151,27 +154,54 @@
             </thead>
             <tbody>
                 <tr><td>牛肉湯 (含肉燥飯)</td><td>650</td><td>80 分</td></tr>
-                <tr><td>鱔魚意麵</td><td>700</td><td>90 分</td></tr>
-                <tr><td>炸蝦捲 (一份)</td><td>450</td><td>55 分</td></tr>
-                <tr><td>棺材板</td><td>800</td><td>100 分</td></tr>
-                <tr><td>全糖手搖飲</td><td>500</td><td>65 分</td></tr>
-                <tr><td>丹丹漢堡套餐</td><td>950</td><td>120 分</td></tr>
+                <tr><td>2</td><td>肉燥飯</td><td>500</td></tr>
+                <tr><td>3</td><td>鍋燒意麵</td><td>600</td></tr>
+                <tr><td>4</td><td>乾炒鱔魚意麵</td><td>650</td></tr>
+                <tr><td>5</td><td>虱目魚肚粥</td><td>500</td></tr>
+                <tr><td>6</td><td>土魠魚羹麵</td><td>500</td></tr>
+                <tr><td>7</td><td>魚皮湯</td><td>200</td></tr>
+                <tr><td>8</td><td>台南米糕</td><td>400</td></tr>
+                <tr><td>9</td><td>豬油拌飯</td><td>450</td></tr>
+                <tr><td>10</td><td>豚骨拉麵</td><td>750</td></tr>
+                <tr><td>11</td><td>燒肉丼飯</td><td>750</td></tr>
+                <tr><td>12</td><td>日式蛋包飯</td><td>650</td></tr>
+                <tr><td>13</td><td>刈包</td><td>430</td></tr>
+                <tr><td>14</td><td>炸蛋餅</td><td>400</td></tr>
+                <tr><td>15</td><td>碳烤饅頭夾蛋</td><td>400</td></tr>
+                <tr><td>16</td><td>炒泡麵</td><td>550</td></tr>
+                <tr><td>17</td><td>炸雞腿</td><td>300</td></tr>
+                <tr><td>18</td><td>四神湯</td><td>250</td></tr>
+                <tr><td>19</td><td>麵線羹</td><td>450</td></tr>
+                <tr><td>20</td><td>滷味拼盤</td><td>500</td></tr>
             </tbody>
         </table>
       </div>
     </section>
 
     <section class="block">
-      <h3>誠實面對區</h3>
       <div class="calculator-box">
         <form id="diet-form">
             <div class="checkbox-group">
                 <label><input type="checkbox" value="650" name="food"> 牛肉湯套餐 (650卡)</label>
-                <label><input type="checkbox" value="700" name="food"> 鱔魚意麵 (700卡)</label>
-                <label><input type="checkbox" value="800" name="food"> 棺材板 (800卡)</label>
-                <label><input type="checkbox" value="350" name="food"> 炸雞 (350卡)</label>
-                <label><input type="checkbox" value="500" name="food"> 全糖波霸奶茶 (500卡)</label>
-                <label><input type="checkbox" value="300" name="food"> 小碗牛肉湯 (300卡)</label>
+                <label><input type="checkbox" value="500" name="food"> 肉燥飯 (500大卡)</label>
+                <label><input type="checkbox" value="600" name="food"> 鍋燒意麵 (600大卡)</label>
+                <label><input type="checkbox" value="650" name="food"> 乾炒鱔魚意麵 (650大卡)</label>
+                <label><input type="checkbox" value="500" name="food"> 虱目魚肚粥 (500大卡)</label>
+                <label><input type="checkbox" value="500" name="food"> 土魠魚羹麵 (500大卡)</label>
+                <label><input type="checkbox" value="200" name="food"> 魚皮湯 (200大卡)</label>
+                <label><input type="checkbox" value="400" name="food"> 台南米糕 (400大卡)</label>
+                <label><input type="checkbox" value="450" name="food"> 豬油拌飯 (450大卡)</label>
+                <label><input type="checkbox" value="750" name="food"> 豚骨拉麵 (750大卡)</label>
+                <label><input type="checkbox" value="750" name="food"> 燒肉丼飯 (750大卡)</label>
+                <label><input type="checkbox" value="650" name="food"> 日式蛋包飯 (650大卡)</label>
+                <label><input type="checkbox" value="430" name="food"> 刈包 (430大卡)</label>
+                <label><input type="checkbox" value="400" name="food"> 炸蛋餅 (400大卡)</label>
+                <label><input type="checkbox" value="400" name="food"> 碳烤饅頭夾蛋 (400大卡)</label>
+                <label><input type="checkbox" value="550" name="food"> 炒泡麵 (550大卡)</label>
+                <label><input type="checkbox" value="300" name="food"> 炸雞腿 (300大卡)</label>
+                <label><input type="checkbox" value="250" name="food"> 四神湯 (250大卡)</label>
+                <label><input type="checkbox" value="450" name="food"> 麵線羹 (450大卡)</label>
+                <label><input type="checkbox" value="500" name="food"> 滷味拼盤 (500大卡)</label>
             </div>
             
             <button type="button" class="calc-btn" onclick="calculateGuilt()">☠️ 開始結算</button>
