@@ -122,6 +122,7 @@
 
     if (prevBtn) prevBtn.addEventListener("click", () => { go(-1); restart(); });
     if (nextBtn) nextBtn.addEventListener("click", () => { go(1);  restart(); });
+
     // 自動輪播（滑入停止，滑出繼續）
     root.addEventListener("mouseenter", stop);
     root.addEventListener("mouseleave", start);
