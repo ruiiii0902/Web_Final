@@ -5,6 +5,8 @@
   <title>等等要吃啥 | IIM好食在</title>
 
   <script src="js/index.js" defer></script>
+  <script src="js/foodData.js"></script>
+  <script src="js/spin.js" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
 
   <style>
@@ -38,7 +40,7 @@
         color: white;   
         border: none;
         border-radius: 50px;
-        cursor: pointer;    /* 手型游標*/
+        cursor: pointer;    /* 手型游標 */
         box-shadow: 0 5px 0 #4d2301;
         transition: transform 0.1s;
         margin-bottom: 20px;
@@ -55,23 +57,70 @@
         text-align: left;
     }
 
-    .list-settings textarea {
-        width: 100%;
-        height: 80px;
-        padding: 10px;
-        border: 2px solid #ddd;
-        border-radius: 5px;
-        font-size: 1rem;
-    }
     /* Fixed centered page title (置中且固定於視窗) */
     .fixed-title {
       left: 50%;
       transform: translateX(-50%);
-      top: 125px; /* 如需調整與 header 的間距，可改這個值 */
+      top: calc(var(--header-height) + 10px); /* 與 header 保持間距 */
       z-index: 20;
       margin: 0;
       background: transparent;
       padding: 0.2rem 0.6rem;
+    }
+
+    .spin-page {
+      padding-top: 70px; /* 讓內容避開固定標題 */
+    }
+
+    .list-settings h4 {
+      margin-bottom: 8px;
+    }
+
+    .add-form {
+      margin-top: 12px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .add-form input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    .add-form button {
+      padding: 10px 16px;
+      background: #b4452a;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .add-form button:hover {
+      background: #c85c38;
+    }
+
+    .options-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      font-size: 0.95rem;
+    }
+
+    .options-table th,
+    .options-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+      background: #fff;
+    }
+
+    .options-table th {
+      background: #f2e6c4;
     }
   </style>
 </head>
@@ -96,15 +145,14 @@
             <a href="midnight.html">宵夜店</a>
           </div>
         </div>
-        <a href="Spin.html" class="active">美食拉霸機</a>
+        <a href="spin.html" class="active">美食拉霸機</a>
         <a href="diet.html">贖罪計算機</a>
       </nav>
     </div>
   </header>
-
   <div class="header-spacer"></div>
 
-  <main class="content">
+  <main class="content spin-page">
     <h2 class="fixed-title">今天吃什麼？</h2>
 
     <section class="block">
@@ -118,60 +166,34 @@
           <button id="spin-btn" class="action-btn" onclick="startSpin()">🍜 抽一個！</button>
 
           <div class="list-settings">
-            <h4>抽籤名單 (請用逗號分隔)：</h4>
-            <textarea id="food-list">文章牛肉湯,丹丹漢堡,富盛號碗粿,蜷尾家,六千牛肉湯,不吃了減肥</textarea>
+            <div class="add-form">
+              <strong>新增餐廳</strong>
+              <input type="text" id="new-name" placeholder="輸入餐廳名稱">
+              <button type="button" id="add-btn">加入名單</button>
+            </div>
+
+            <table class="options-table" id="food-table" aria-label="目前抽籤選項列表">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>名稱</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td colspan="2">載入中...</td></tr>
+              </tbody>
+            </table>
           </div>
       </div>
     </section>
 
     <section class="block">
         <h3>規則說明</h3>
-        <p>1. 在下方的框框中輸入你想吃的餐廳，中間用「,」逗號隔開。<br>
+        <p>1. 點擊「加入名單」輸入你想吃的餐廳，也可使用預設名單。<br>
            2. 按下紅色按鈕，等待命運的結果。<br>
            3. 如果結果不滿意... 那就再按一次，直到滿意為止！</p>
     </section>
   </main>
 
-  <script>
-    let timer; 
-    let isSpinning = false; 
-
-    function startSpin() {
-        const btn = document.getElementById('spin-btn');
-        const resultText = document.getElementById('result-text');
-        const inputList = document.getElementById('food-list').value;
-        const foods = inputList.split(','); 
-
-        if (isSpinning) return;
-        isSpinning = true;
-        btn.innerText = "選取中...";
-        btn.style.backgroundColor = "#95a5a6"; 
-
-        let speed = 50; 
-        let counter = 0;
-        
-        timer = setInterval(() => {
-            const randomIndex = Math.floor(Math.random() * foods.length);
-            resultText.innerText = foods[randomIndex];
-            counter++;
-            
-            if (counter > 30) {
-              clearInterval(timer);
-              showResult(foods); 
-            }
-        }, speed);
-    }
-
-    function showResult(foods) {
-        const resultText = document.getElementById('result-text');
-        const btn = document.getElementById('spin-btn');
-        const finalChoice = foods[Math.floor(Math.random() * foods.length)];
-        
-        resultText.innerText = "🎉 " + finalChoice + " 🎉";
-        isSpinning = false;
-        btn.innerText = "再抽一次";
-        btn.style.backgroundColor = "#e74c3c";
-    }
-  </script>
 </body>
 </html>
