@@ -28,6 +28,13 @@ body {
    Header（復古台南感）
 ========================================= */
 
+/* Logo 圖片大小控制 */
+.logo-img {
+  height: 50px;        /* 建議 50–70px，可依需求調整 */
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
 .site-header {
   position: fixed;
   top: 0; left: 0; right: 0;
