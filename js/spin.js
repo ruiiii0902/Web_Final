@@ -1,10 +1,11 @@
 ﻿(() => {
-  let timer;
-  let isSpinning = false;
-  let baseFoodNames = [];
-  let customFoodNames = [];
+let timer; //計時器
+  let isSpinning = false; // 判斷目前是否正在抽籤中
+  let baseFoodNames = []; // 存放從外部資料載入的餐廳清單
+  let customFoodNames = []; // 存放使用者手動新增的餐廳清單
 
   function collectFoodData() {
+    // 定義資料來源，使用 typeof 檢查變數是否存在，避免報錯
     const sources = [
       typeof food_tainan !== 'undefined' ? food_tainan : [],
       typeof food_ramen !== 'undefined' ? food_ramen : [],
@@ -21,7 +22,7 @@
       list.forEach(item => {
         if (!item || !item.name) return;
         const name = String(item.name).trim();
-        if (!name || seen.has(name)) return;
+        if (!name || seen.has(name)) return;  // 如果名字是空的或已經出現過，就跳過
         seen.add(name);
         names.push(name);
       });
@@ -73,11 +74,13 @@
     let counter = 0;
     const speed = 50;
 
+    // 設定計時器，快速隨機切換顯示文字
     timer = setInterval(() => {
       const randomIndex = Math.floor(Math.random() * foods.length);
       resultText.innerText = foods[randomIndex];
       counter++;
 
+      // 跑30 次後停止
       if (counter > 30) {
         clearInterval(timer);
         showResult(foods);

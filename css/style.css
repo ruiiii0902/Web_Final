@@ -141,7 +141,7 @@ body {
 }
 
 .header-spacer {
-  height: var(--header-height);
+  height: calc(var(--header-height) + 40px); /* 增加緩衝，避免被固定標題遮擋 */
 }
 
 /* =========================================
